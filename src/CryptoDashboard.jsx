@@ -217,7 +217,7 @@ export default function CryptoDashboard() {
     <div className="min-h-screen flex flex-col lg:flex-row bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white">
       {/* Centered title (top) */}
       <div className="fixed top-0 left-0 w-full z-20 flex justify-center items-center h-16 bg-black/60 backdrop-blur-md border-b border-gray-700 px-4 lg:hidden">
-        <h1 className="text-5xl sm:text-3xl font-bold">CRYPTO DASH</h1>
+        <h1 className="text-3xl sm:text-3xl font-bold">CRYPTO DASH</h1>
       </div>
 
       {/* Hamburger button (top-left) */}
@@ -306,14 +306,14 @@ export default function CryptoDashboard() {
                 <div className="flex justify-between items-center border-b border-gray-700 pb-2">
                   <div className="flex items-center gap-2">
                     <span className="text-xl">💰</span>
-                    <span className="text-gray-400 text-3xl">Price</span>
+                    <span className="text-gray-400">Price</span>
                   </div>
                   <span className="text-green-400 text-3xl font-semibold text-right">${coinInfo.price.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-gray-700 pb-2">
                   <div className="flex items-center gap-2">
                     <span className="text-xl">📉</span>
-                    <span className="text-gray-400 text-xl">24h Change</span>
+                    <span className="text-gray-400">24h Change</span>
                   </div>
                   <span className={`${coinInfo.priceChange > 0 ? "text-green-400" : "text-red-400"} font-semibold text-right`}>
                     {coinInfo.priceChange.toFixed(2)}%
@@ -322,14 +322,14 @@ export default function CryptoDashboard() {
                 <div className="flex justify-between items-center border-b border-gray-700 pb-2">
                   <div className="flex items-center gap-2">
                     <span className="text-xl">📊</span>
-                    <span className="text-gray-400 text-xl">Market Cap</span>
+                    <span className="text-gray-400">Market Cap</span>
                   </div>
                   <span className="text-white font-semibold text-right">${coinInfo.marketCap.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-2">
                     <span className="text-xl">📈</span>
-                    <span className="text-gray-400 text-xl">ROI</span>
+                    <span className="text-gray-400">ROI</span>
                   </div>
                   <span className="text-blue-400 font-semibold text-right">{coinInfo.roi.toFixed(2)}%</span>
                 </div>
