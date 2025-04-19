@@ -48,7 +48,9 @@ def get_news():
 def coingecko_history(id: str = "bitcoin", days: int = 30):
     try:
         url = f"https://api.coingecko.com/api/v3/coins/{id}/market_chart?vs_currency=usd&days={days}"
-        resp = requests.get(url)
+        headers = {"User-Agent": "Mozilla/5.0"}
+        resp = requests.get(url, headers=headers)
+        resp.raise_for_status()
         return resp.json()
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
