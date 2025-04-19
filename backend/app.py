@@ -1,8 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
 import numpy as np
+import os
+import requests
 
 app = FastAPI()
 
@@ -31,3 +33,13 @@ def predict_trend(data: MultiTimeframePriceData):
         "trend_7d": get_trend(data.prices_7d),
         "trend_30d": get_trend(data.prices_30d),
     }
+
+@app.get("/news")
+def get_news():
+    try:
+        key = os.environ.get("CRYPTOPANIC_KEY", "YOUR_KEY")
+        url = f"https://cryptopanic.com/api/v1/posts/?auth_token={key}&public=true"
+        resp = requests.get(url)
+        return resp.json()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
