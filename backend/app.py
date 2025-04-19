@@ -48,10 +48,13 @@ def get_news():
 def coingecko_history(id: str = "bitcoin", days: int = 30):
     try:
         url = f"https://api.coingecko.com/api/v3/coins/{id}/market_chart?vs_currency=usd&days={days}"
-        headers = {"User-Agent": "Mozilla/5.0"}
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Accept": "application/json"
+        }
         resp = requests.get(url, headers=headers)
         print("CoinGecko status:", resp.status_code)
-        print("CoinGecko response:", resp.text[:300])  # Print first 300 chars
+        print("CoinGecko response:", resp.text[:300])
         resp.raise_for_status()
         return resp.json()
     except Exception as e:
