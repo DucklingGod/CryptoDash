@@ -43,3 +43,12 @@ def get_news():
         return resp.json()
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/coingecko-history")
+def coingecko_history(id: str = "bitcoin", days: int = 30):
+    try:
+        url = f"https://api.coingecko.com/api/v3/coins/{id}/market_chart?vs_currency=usd&days={days}"
+        resp = requests.get(url)
+        return resp.json()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
