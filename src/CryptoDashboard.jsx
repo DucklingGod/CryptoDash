@@ -163,7 +163,8 @@ export default function CryptoDashboard() {
           return;
         }
 
-        const trendRes = await axios.post("http://localhost:9000/predict", {
+        const backendUrl = import.meta.env.VITE_BACKEND_URL;
+        const trendRes = await axios.post(`${backendUrl}/predict`, {
           prices_1d,
           prices_7d,
           prices_30d,
