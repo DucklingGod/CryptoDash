@@ -182,7 +182,8 @@ export default function CryptoDashboard() {
 
   async function fetchCoinGeckoHistory(id = "bitcoin", days = 30) {
     try {
-      const url = `https://thingproxy.freeboard.io/fetch/https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}`;
+      const backendUrl = import.meta.env.VITE_BACKEND_URL;
+      const url = `${backendUrl}/coingecko-history?id=${id}&days=${days}`;
       const res = await axios.get(url);
       return res.data.prices.map(([_, price]) => price);
     } catch (e) {
