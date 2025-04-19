@@ -50,7 +50,10 @@ def coingecko_history(id: str = "bitcoin", days: int = 30):
         url = f"https://api.coingecko.com/api/v3/coins/{id}/market_chart?vs_currency=usd&days={days}"
         headers = {"User-Agent": "Mozilla/5.0"}
         resp = requests.get(url, headers=headers)
+        print("CoinGecko status:", resp.status_code)
+        print("CoinGecko response:", resp.text[:300])  # Print first 300 chars
         resp.raise_for_status()
         return resp.json()
     except Exception as e:
+        print("CoinGecko error:", e)
         raise HTTPException(status_code=500, detail=str(e))
