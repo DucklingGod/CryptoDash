@@ -122,9 +122,8 @@ export default function CryptoDashboard() {
     if (!selectedCoin) return;
     async function fetchNews() {
       try {
-        const key = import.meta.env.VITE_CRYPTOPANIC_KEY;
-        const url = `https://thingproxy.freeboard.io/fetch/https://cryptopanic.com/api/v1/posts/?auth_token=${key}&public=true`;
-        const res = await axios.get(url);
+        const backendUrl = import.meta.env.VITE_BACKEND_URL;
+        const res = await axios.get(`${backendUrl}/news`);
         setNewsItems(res.data.results.slice(0, 5));
         setNewsError(false);
       } catch {
